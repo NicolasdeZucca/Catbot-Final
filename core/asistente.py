@@ -117,11 +117,14 @@ def obtener_respuesta(consulta, datos, nombre, stemmer, idioma, idi, archivo):
     puntuadas.sort(reverse=True)
 
     # 3. Si hay una coincidencia suficientemente buena, devuelve esa respuesta
-    if puntuadas and puntuadas[0][0] >= 0.55:
+    if puntuadas and puntuadas[0][0] >= 0.30:
         return puntuadas[0][2]  # respuesta con mayor similitud
 
     # 4. Si no hay buena coincidencia, sugiere hasta 3 preguntas similares
-    sugerencias = puntuadas[:3]
+    sugerencias = [
+    (score, pregunta, respuesta) for score, pregunta, respuesta in puntuadas
+    if pregunta.strip().startswith("¿") and pregunta.strip().endswith("?")
+    ][:3]
     print(random.choice(idi["frases_no_se"]))  # frase simpática de “no sé”
 
     if sugerencias:
