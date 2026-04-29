@@ -12,6 +12,8 @@ PALABRAS_PROMEDIO = [
     "calcular media", "average", "avg", "compute average"
 ]
 
+# palabras ayuda
+
 PALABRAS_AYUDA = [
     "ayuda", "help", "ajuda", "ajudar", "assistência"
 ]
